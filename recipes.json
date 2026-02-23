@@ -1,0 +1,85 @@
+{
+  "Default Recipe": [
+    {
+      "name": "Flour",
+      "target": 500.0,
+      "tol": 1.5,
+      "actual": null,
+      "status": "-"
+    },
+    {
+      "name": "Sugar",
+      "target": 250.0,
+      "tol": 1.5,
+      "actual": null,
+      "status": "-"
+    },
+    {
+      "name": "Butter",
+      "target": 200.0,
+      "tol": 2.0,
+      "actual": null,
+      "status": "-"
+    },
+    {
+      "name": "Eggs",
+      "target": 150.0,
+      "tol": 3.0,
+      "actual": null,
+      "status": "-"
+    }
+  ],
+  "Spice Mix": [
+    {
+      "name": "Turmeric",
+      "target": 50.0,
+      "tol": 2.0,
+      "actual": null,
+      "status": "-"
+    },
+    {
+      "name": "Cumin",
+      "target": 40.0,
+      "tol": 2.0,
+      "actual": null,
+      "status": "-"
+    },
+    {
+      "name": "Coriander",
+      "target": 35.0,
+      "tol": 2.0,
+      "actual": null,
+      "status": "-"
+    },
+    {
+      "name": "Fenugreek",
+      "target": 25.0,
+      "tol": 2.5,
+      "actual": null,
+      "status": "-"
+    }
+  ],
+  "Dry Goods": [
+    {
+      "name": "Rice",
+      "target": 1000.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "-"
+    },
+    {
+      "name": "Lentils",
+      "target": 500.0,
+      "tol": 1.5,
+      "actual": null,
+      "status": "-"
+    },
+    {
+      "name": "Beans",
+      "target": 750.0,
+      "tol": 1.5,
+      "actual": null,
+      "status": "-"
+    }
+  ]
+}

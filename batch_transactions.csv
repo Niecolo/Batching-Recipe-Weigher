@@ -1,0 +1,1 @@
+batch_id,transaction_number,timestamp,ingredient_index,ingredient_name,target_weight_g,tolerance_percent,min_ok_g,max_ok_g,actual_weight_g,status,deviation_g,units

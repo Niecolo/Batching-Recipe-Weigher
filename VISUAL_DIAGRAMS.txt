@@ -1,0 +1,312 @@
+╔═════════════════════════════════════════════════════════════════════════════╗
+║                   PRINT PREVIEW FEATURE - VISUAL DIAGRAM                      ║
+╚═════════════════════════════════════════════════════════════════════════════╝
+
+APPLICATION WINDOW:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  Batching Recipes - Scale/Serial                                      [_][□]X │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  [Input Serial Settings] [Alarm Output] [Print Ticket Settings] ← HERE      │
+│  [Simulated Weight]                                                          │
+│                                                                              │
+│  ┌─ Print Ticket ──────────────────────────────────────────────────────┐   │
+│  │ ☑ Auto-print after capture   COM: COM3  Baud: 9600  Parity: None  │   │
+│  │                                                                      │   │
+│  │ Header: COMPANY NAME                                               │   │
+│  │         Addr • Tel                                                 │   │
+│  │                                                                      │   │
+│  │ Width (chars): [32]                Printer: OK [green indicator]   │   │
+│  │                                                                      │   │
+│  │                    [🖨️ Test Print] ← Click here!                   │   │
+│  └──────────────────────────────────────────────────────────────────────┘   │
+│                                                                              │
+│  [Recipe Editor] [Live Weighing] [Weighing Controls] [Raw Serial Monitor]   │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+CLICK TEST PRINT BUTTON:
+                            ↓
+
+PREVIEW WINDOW OPENS:
+┌──────────────────────────────────────────────────┐
+│ Print Ticket Preview                         [X] │
+├──────────────────────────────────────────────────┤
+│ Print Preview - Thermal Receipt (32 char width) │
+├──────────────────────────────────────────────────┤
+│                                                  │
+│ ┌────────────────────────────────────────────┐  │
+│ │ ================================            │  │
+│ │          COMPANY NAME                      │  │
+│ │          Addr • Tel                        │  │
+│ │ ================================            │  │
+│ │                                            │  │
+│ │ Batch: TEST-001                            │  │
+│ │ Time:  01/18/2026 02:30:45 PM             │  │
+│ │                                            │  │
+│ │ Item:  Test Ingredient                    │  │
+│ │                                            │  │
+│ │ Target: 1000.00 g                         │  │
+│ │ Actual: 1005.30 g                         │  │
+│ │ Tol:    2.0%                               │  │
+│ │                                            │  │
+│ │ Status: OK                                 │  │
+│ │ Dev:    +5.30 g                           │  │
+│ │                                            │  │
+│ │ ================================            │  │
+│ └────────────────────────────────────────────┘  │
+│ [scrollbar if needed]                          │
+├──────────────────────────────────────────────────┤
+│ [🖨️ Print Ticket] [📋 Copy Text]               │
+│ [           Close           ]                    │
+└──────────────────────────────────────────────────┘
+
+SELECT AN ACTION:
+┌─────────────────────┐   ┌──────────────────┐   ┌──────────────┐
+│ 🖨️ Print Ticket     │   │ 📋 Copy Text     │   │ Close        │
+│                     │   │                  │   │              │
+│ Sends to printer    │   │ Copies to        │   │ Closes       │
+│ (if connected)      │   │ clipboard        │   │ window       │
+│                     │   │ for sharing      │   │              │
+└─────────────────────┘   └──────────────────┘   └──────────────┘
+         │                        │                      │
+         ↓                        ↓                      ↓
+    "Print Job Sent"         "Copied to            Window
+    "Ticket sent to          Clipboard"            Closes
+     printer."
+     Window closes
+
+
+DURING ACTUAL WEIGHING:
+┌────────────────────────────────────────────────────────────┐
+│ 1. Load Recipe → 2. Enable Auto-Print → 3. Start Batch     │
+│                                                              │
+│ 4. Place ingredient on scale                               │
+│ 5. Click Capture Now                                       │
+│                            ↓                                │
+│ Auto-print checks:                                         │
+│ • Is auto-print enabled? ✓                                 │
+│ • Is printer connected? ✓                                  │
+│ • Prepare ticket data ✓                                    │
+│                            ↓                                │
+│ Send to printer (background thread)                        │
+│ User sees: "Print job sent" confirmation                   │
+│                            ↓                                │
+│ 6. Move to next ingredient → Repeat                        │
+└────────────────────────────────────────────────────────────┘
+
+
+DATA FLOW DIAGRAM:
+┌───────────────┐
+│  User Action  │
+└───────┬───────┘
+        │
+        ├─ Click 🖨️ Test Print
+        │         │
+        │         ├─→ test_print_ticket()
+        │         │   ├─ Create test_data dict
+        │         │   └─ show_print_preview(test_data)
+        │         │
+        │         └─→ Format Ticket Text ──→ Preview Window
+        │
+        └─ Capture Weight During Batch
+                  │
+                  ├─→ capture_current()
+                  │   ├─ Create ticket_data dict
+                  │   └─ print_transaction_ticket(ticket_data)
+                  │
+                  └─→ (if auto-print enabled)
+                      └─→ _send_print_job()
+                          └─→ Background Thread → Printer
+
+
+CONFIGURATION PANEL (Before using):
+┌─────────────────────────────────────────────────┐
+│ Print Ticket Settings                           │
+├─────────────────────────────────────────────────┤
+│ Header: COMPANY NAME                            │
+│         Addr • Tel                              │
+│                                                  │
+│ Width (chars): [32] ← Match your printer        │
+│ COM Port: [COM3] ← Select printer port          │
+│ Baud: [9600] ← Communication speed              │
+│ Parity: [None] ← Typically None                 │
+│                                                  │
+│ ☑ Auto-print after capture ← Enable to auto-    │
+│                               print              │
+│                                                  │
+│ ☐ Printer: Disconnected [gray]                  │
+│ OR                                               │
+│ ☑ Printer: OK [green]                           │
+│                                                  │
+│ [🖨️ Test Print]                                 │
+└─────────────────────────────────────────────────┘
+        │
+        └─→ Click Test Print to see preview
+
+
+FEATURE BENEFITS:
+┌──────────────────────────────────────────────────────────┐
+│ Before Feature     │ After Feature                        │
+├────────────────────┼─────────────────────────────────────┤
+│ Print test wastes  │ Preview shows format without        │
+│ paper              │ wasting paper                        │
+│                    │                                      │
+│ Need printer to    │ Preview works with or without       │
+│ test format        │ printer connected                   │
+│                    │                                      │
+│ Can't review       │ Can customize header and width      │
+│ before printing    │ before printing                     │
+│                    │                                      │
+│ No way to copy     │ Copy button saves ticket text       │
+│ ticket text        │ to clipboard                        │
+│                    │                                      │
+│ Direct print      │ Preview first, then decide to       │
+│ on button click    │ print or not                        │
+└──────────────────────┴─────────────────────────────────────┘
+
+
+DOCUMENTATION STRUCTURE:
+┌────────────────────────────────────────────────────────────┐
+│ README_PRINT_PREVIEW.md (Navigation Index)                 │
+│ ├─ Start here for quick links                              │
+│ └─ Links to all documentation                              │
+│                                                             │
+│ QUICK_START_PRINT_PREVIEW.md (5-min Guide)                 │
+│ ├─ For first-time users                                    │
+│ └─ Quick how-to steps                                      │
+│                                                             │
+│ PRINT_PREVIEW_FEATURE.md (Complete Guide)                  │
+│ ├─ Full feature documentation                              │
+│ └─ Troubleshooting guide                                   │
+│                                                             │
+│ VISUAL_GUIDE.md (Examples & Diagrams)                       │
+│ ├─ Window layouts                                          │
+│ └─ Format examples                                         │
+│                                                             │
+│ DEVELOPER_REFERENCE.md (Code Docs)                          │
+│ ├─ API reference                                           │
+│ └─ Integration guide                                       │
+│                                                             │
+│ IMPLEMENTATION_SUMMARY.md (Technical)                       │
+│ └─ What changed in the code                                │
+│                                                             │
+│ COMPLETE_SUMMARY.md (Executive)                             │
+│ └─ High-level overview                                     │
+└────────────────────────────────────────────────────────────┘
+
+
+BUTTON STATE DIAGRAM:
+Normal State:
+[🖨️ Print Ticket] [📋 Copy Text] [Close]
+   (green)         (blue)         (gray)
+
+When Clicked:
+[🖨️ Print Ticket] → "Validating printer..."
+   (enabled)            ↓
+                    (if ready) → "Sending..."
+                                  ↓
+                              "Print Job Sent"
+                              Window closes
+
+
+WORKFLOW:
+START
+ │
+ ├─→ Want to see preview?
+ │   │
+ │   ├─→ Click 🖨️ Test Print
+ │   │   └─→ Preview opens
+ │   │       └─→ Review formatting
+ │   │           ├─→ Looks good? Click Close
+ │   │           └─→ Need to adjust? Modify settings, click Test again
+ │   │
+ │   └─→ Want to use actual weighing?
+ │       │
+ │       ├─→ Load recipe
+ │       ├─→ Start batch
+ │       ├─→ Place ingredient
+ │       ├─→ Click Capture Now
+ │       │   (if auto-print enabled → sends to printer)
+ │       ├─→ Move to next ingredient
+ │       └─→ Repeat
+ │
+ └─→ END
+
+
+PAPER WIDTH EXAMPLES:
+
+24 Characters:      32 Characters:      40 Characters:
+════════════════    ════════════════    ════════════════════════════════
+Company Name        Company Name        Company Name
+════════════════    ════════════════    ════════════════════════════════
+                                        
+Item: Ingredient    Item: Ingredient    Item: Ingredient Name
+Target: 1000g       Target: 1000.00g    Target: 1000.00 g
+Actual: 1005g       Actual: 1005.30g    Actual: 1005.30 g
+
+
+TRIPLE BUTTON INTERACTION:
+
+╔════════════════════════════════════════════════════════╗
+║         Preview Window Ready for Action                ║
+║                                                        ║
+║           [🖨️ Print] [📋 Copy] [Close]               ║
+║                │          │        │                   ║
+║                └──────┬───┴───┬────┘                   ║
+║                       │       │                        ║
+║              ┌────────┘       └────────┐               ║
+║              │                         │               ║
+║              ↓                         ↓               ║
+║          Printer Path          Clipboard Path         ║
+║              │                         │               ║
+║    Check Connection?            Copy to Clipboard     ║
+║         │       │                      │              ║
+║      Ready?  Not?              "Copied!"              ║
+║         │       │                      │              ║
+║    Send Print  Show              Confirm shown         ║
+║    Job in BG   Warning                │              ║
+║         │       │                      │              ║
+║    Show        User               Window stays        ║
+║    "Sent"      confirms           open                 ║
+║         │       │                      │              ║
+║    Close       Dismiss              Window stays       ║
+║    Window      message               open              ║
+║                                       │               ║
+║                                   Click Close        ║
+║                                       │               ║
+║                                   Close Window        ║
+╚════════════════════════════════════════════════════════╝
+
+
+STATUS INDICATOR:
+
+When Printer Connected:
+┌─────────────────────┐
+│ Printer: OK [green] │
+└─────────────────────┘
+All printer functions available ✓
+
+When Printer Disconnected:
+┌──────────────────────────┐
+│ Printer: Disconnected    │
+│ [gray]                   │
+└──────────────────────────┘
+Print button shows warning when clicked
+
+
+KEY FEATURES AT A GLANCE:
+
+✓ See ticket format        → Preview window
+✓ Customize layout         → Header, paper width
+✓ Share format             → Copy to clipboard
+✓ Test without printer     → No connection needed
+✓ Auto-print real data     → Background printing
+✓ User feedback            → Status messages
+✓ Error handling           → Warnings if needed
+✓ Easy configuration       → Simple settings panel
+
+
+════════════════════════════════════════════════════════════════════════════
+                        READY TO USE!
+════════════════════════════════════════════════════════════════════════════
