@@ -1,85 +1,413 @@
 {
-  "Default Recipe": [
+  "Family": [
     {
-      "name": "Flour",
-      "target": 500.0,
-      "tol": 1.5,
-      "actual": null,
-      "status": "-"
-    },
-    {
-      "name": "Sugar",
-      "target": 250.0,
-      "tol": 1.5,
-      "actual": null,
-      "status": "-"
-    },
-    {
-      "name": "Butter",
-      "target": 200.0,
-      "tol": 2.0,
-      "actual": null,
-      "status": "-"
-    },
-    {
-      "name": "Eggs",
-      "target": 150.0,
-      "tol": 3.0,
-      "actual": null,
-      "status": "-"
-    }
-  ],
-  "Spice Mix": [
-    {
-      "name": "Turmeric",
-      "target": 50.0,
-      "tol": 2.0,
-      "actual": null,
-      "status": "-"
-    },
-    {
-      "name": "Cumin",
-      "target": 40.0,
-      "tol": 2.0,
-      "actual": null,
-      "status": "-"
-    },
-    {
-      "name": "Coriander",
-      "target": 35.0,
-      "tol": 2.0,
-      "actual": null,
-      "status": "-"
-    },
-    {
-      "name": "Fenugreek",
-      "target": 25.0,
-      "tol": 2.5,
-      "actual": null,
-      "status": "-"
-    }
-  ],
-  "Dry Goods": [
-    {
-      "name": "Rice",
-      "target": 1000.0,
+      "name": "Brother",
+      "target": 100.0,
       "tol": 1.0,
       "actual": null,
-      "status": "-"
+      "status": "PENDING"
     },
     {
-      "name": "Lentils",
-      "target": 500.0,
-      "tol": 1.5,
+      "name": "Sister",
+      "target": 100.0,
+      "tol": 1.0,
       "actual": null,
-      "status": "-"
+      "status": "PENDING"
     },
     {
-      "name": "Beans",
-      "target": 750.0,
-      "tol": 1.5,
+      "name": "Mother",
+      "target": 100.0,
+      "tol": 1.0,
       "actual": null,
-      "status": "-"
+      "status": "PENDING"
+    },
+    {
+      "name": "Father",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Nephew",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Niece",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    }
+  ],
+  "Numbers": [
+    {
+      "name": "1",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "2",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "3",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "4",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "5",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "6",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    }
+  ],
+  "Bicol Express": [
+    {
+      "name": "Taro Leaves",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Coconut Milk",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Pork Strips",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Bagoong",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    }
+  ],
+  "Emoji": [
+    {
+      "name": "Heart",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Cry",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Happy",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Sad",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Angry",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    }
+  ],
+  "Letters": [
+    {
+      "name": "A",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "B",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "C",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "D",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "E",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "F",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "G",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "H",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "I",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "J",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "K",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "L",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "M",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "N",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "O",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "P",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Q",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "R",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "S",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "T",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "U",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "V",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "W",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "X",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Y",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Z",
+      "target": 100.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    }
+  ],
+  "Beast": [
+    {
+      "name": "Chicken",
+      "target": 123.0,
+      "tol": 1.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Hog",
+      "target": 124.0,
+      "tol": 2.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Worm",
+      "target": 125.0,
+      "tol": 3.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Duck",
+      "target": 126.0,
+      "tol": 4.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Dove",
+      "target": 127.0,
+      "tol": 5.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Elephant",
+      "target": 128.0,
+      "tol": 6.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Tiger",
+      "target": 129.0,
+      "tol": 7.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Lion",
+      "target": 130.0,
+      "tol": 8.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Leopard",
+      "target": 131.0,
+      "tol": 9.0,
+      "actual": null,
+      "status": "PENDING"
+    },
+    {
+      "name": "Cat",
+      "target": 132.0,
+      "tol": 10.0,
+      "actual": null,
+      "status": "PENDING"
     }
   ]
 }
