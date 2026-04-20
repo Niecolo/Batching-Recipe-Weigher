@@ -1,0 +1,10 @@
+# BatchingApp Requirements
+# Version 2.0.0
+
+# Core dependencies
+pyserial>=3.5
+openpyxl>=3.0.0
+jsonlines>=4.0.0
+
+# Optional dependencies (for enhanced features)
+Pillow>=9.0.0

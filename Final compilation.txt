@@ -6,7 +6,7 @@ py --version
 
 
 
-cd C:\Users\Administrator\Desktop\Recipe Batching
+cd C:\Users\Leoncio\Desktop\Recipe Batching
 
 python.exe -m pip install --upgrade pip
 
@@ -27,46 +27,13 @@ pip install pyinstaller pyserial pandas openpyxl pywin32 pillow
 pyinstaller batching_app.spec
 
 pyinstaller --onefile --windowed ^
---icon="C:\Users\Administrator\Desktop\Recipe Batching\assets\icon.ico" ^
+--icon="C:\Users\Leoncio\Desktop\Recipe Batching\assets\icon.ico" ^
 --manifest "admin.manifest" ^
 BatchingApp.py
 
 
 i  like the omitted methods included explicitly or exported as a .py file.
 
+Password:789123
 
-
-Batching Process Instruction:
-
-When Creating a New Batch:
-Select from the Recipe Name or Create New Recipe by Clicking New Recipe button
-Entry Ingredient Name,Target Weight and Tolerance of the Ingredient
-Press Add Ingredient to add the entry to the ingredient list
-Press Start Batch button to start weighing
-
-
-When resuming a Batch ID:
-Select first the Recipe name where it belong to
-Press Load Recipe
-Enter the Batch ID to be resumed (You can copy it from the Transaction List)
-Press Resume Batch
-Press Start Batch
-
-Creating a Customized Batch Id by Providing Batch ID (optional)
-
-The app will will continue to use the current Batch ID by enabling Lock Batch ID 
-
-Enabling Auto-advance when tolerance will automatically Record the Ingredient Weight when in tolerance
-and select the next Ingredient in the list
-
-Enabling Auto-loop Batch will resume the batching again from the start when all ingredient of the recent recipe are all recorded.
-
-Shortcut Keys
-F2
-Edit the selected ingredient (opens edit dialog)
-Delete
-Delete the selected ingredient(s) from the recipe
-Ctrl + N
-Create a new recipe
-Ctrl + R
-Resume a batch by entering a Batch ID
+Create the application to make the application always run as administrator
