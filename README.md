@@ -20,6 +20,7 @@ Industrial grade recipe batching system with RS232 scale interface, serial port 
 ✅ **Automatic serial connection** on application startup
 ✅ **Negative weight support**
 ✅ **Full settings persistence** - all user settings saved automatically
+<img width="1365" height="721" alt="image" src="https://github.com/user-attachments/assets/8e519353-ea74-4560-bb31-8a29bf7e2d78" />
 
 ### Control & Automation
 ✅ **3 status levels**: UNDER / OK / OVER
@@ -32,6 +33,8 @@ Industrial grade recipe batching system with RS232 scale interface, serial port 
 ✅ **Continuous sound alarm with separate per-status toggles**
 
 ### Reporting & History
+<img width="1365" height="718" alt="image" src="https://github.com/user-attachments/assets/e3278ce6-7f45-45ff-bd29-dc9e998258e3" />
+
 ✅ **Transaction history viewer with search**
 ✅ **CSV logging for all transactions**
 ✅ **Excel export capability**
